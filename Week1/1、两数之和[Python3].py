@@ -1,13 +1,12 @@
-cclass Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
-        memory = {}
-        for i, e in enumerate(nums):
-            if e in memory: return (memory[e], i)
-            memory[(target - e)] = i
-        return []
-
-#测试例
-#1、
-#输入：[2,7,11,15] 9
-#预期结果：[0,1]
-#实际结果：[0,1]
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        ans = []
+        def x(m,n,pre):
+            if m>n: return
+            if m==0:
+                ans.append(pre+")"*n)
+                return
+            x(m-1,n,pre+"(")
+            x(m,n-1,pre+")")
+        x(n,n,"")
+        return ans
